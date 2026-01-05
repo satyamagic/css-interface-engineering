@@ -18,16 +18,16 @@ Remove until nothing remains that can be removed.
 
 ## Work
 
-[**interface-systems**](https://github.com/satyanagara/interface-systems)  
+[**interface-systems**](interface-systems/)  
 Portfolio demonstrating interface architecture using pure HTML and CSS.
 
-[**interface-experiments**](https://github.com/satyanagara/interface-experiments)  
+[**interface-experiments**](interface-experiments/)  
 Focused explorations of specific interface patterns and interactions.
 
-[**system-design-notes**](https://github.com/satyanagara/system-design-notes)  
+[**system-design-notes**](system-design-notes/)  
 Technical writing on interface philosophy and system constraints.
 
-[**frontend-standards**](https://github.com/satyanagara/frontend-standards)  
+[**frontend-standards**](frontend-standards/)  
 Opinionated engineering guidelines for production interfaces.
 
 ---
