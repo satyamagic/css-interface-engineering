@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion Timing Comparison</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Easing Function Comparison</h1>
+      <p class="subtitle">Click any box to see timing differences</p>
+    </header>
+
+    <section class="comparison-grid">
+      <article class="timing-demo">
+        <h2>Ease-In</h2>
+        <p class="description">Accelerates from rest</p>
+        <button class="demo-box ease-in" aria-label="Ease-in animation demo">
+          Click
+        </button>
+        <code>cubic-bezier(0.42, 0, 1, 1)</code>
+      </article>
+
+      <article class="timing-demo">
+        <h2>Ease-Out</h2>
+        <p class="description">Decelerates to rest</p>
+        <button class="demo-box ease-out" aria-label="Ease-out animation demo">
+          Click
+        </button>
+        <code>cubic-bezier(0, 0, 0.58, 1)</code>
+      </article>
+
+      <article class="timing-demo">
+        <h2>Ease-In-Out</h2>
+        <p class="description">Natural motion cycle</p>
+        <button class="demo-box ease-in-out" aria-label="Ease-in-out animation demo">
+          Click
+        </button>
+        <code>cubic-bezier(0.42, 0, 0.58, 1)</code>
+      </article>
+
+      <article class="timing-demo">
+        <h2>Linear</h2>
+        <p class="description">Constant velocity</p>
+        <button class="demo-box linear" aria-label="Linear animation demo">
+          Click
+        </button>
+        <code>cubic-bezier(0, 0, 1, 1)</code>
+      </article>
+    </section>
+
+    <section class="recommendations">
+      <h2>Usage Guidelines</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Context</th>
+            <th>Duration</th>
+            <th>Easing</th>
+            <th>Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Button feedback</td>
+            <td>100-150ms</td>
+            <td>ease-out</td>
+            <td>Quick response</td>
+          </tr>
+          <tr>
+            <td>Modal enter</td>
+            <td>250ms</td>
+            <td>ease-out</td>
+            <td>Appears smoothly</td>
+          </tr>
+          <tr>
+            <td>Modal exit</td>
+            <td>200ms</td>
+            <td>ease-in</td>
+            <td>Dismisses faster</td>
+          </tr>
+          <tr>
+            <td>Loading spinner</td>
+            <td>500ms</td>
+            <td>linear</td>
+            <td>Continuous loop</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

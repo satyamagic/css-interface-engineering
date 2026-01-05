@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reduced Motion Demonstration</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Reduced Motion Accessibility</h1>
+      <p class="subtitle">Enable "Reduce motion" in your OS settings to see the difference</p>
+    </header>
+
+    <section class="demo-section">
+      <h2>Interactive Elements</h2>
+      
+      <div class="demo-grid">
+        <article class="demo-card">
+          <h3>Button</h3>
+          <p>Standard: Lifts on hover<br>Reduced: Background changes</p>
+          <button class="demo-button">Hover me</button>
+        </article>
+
+        <article class="demo-card">
+          <h3>Card</h3>
+          <p>Standard: Scales and elevates<br>Reduced: Border highlights</p>
+          <div class="hover-card">
+            Interactive card
+          </div>
+        </article>
+
+        <article class="demo-card">
+          <h3>Loading</h3>
+          <p>Standard: Spinning animation<br>Reduced: Pulsing opacity</p>
+          <div class="spinner" aria-label="Loading"></div>
+        </article>
+
+        <article class="demo-card">
+          <h3>Toggle</h3>
+          <p>Standard: Slides across<br>Reduced: Instant position</p>
+          <label class="toggle">
+            <input type="checkbox" aria-label="Toggle switch">
+            <span class="toggle-slider"></span>
+          </label>
+        </article>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>How to Test</h2>
+      <dl class="info-list">
+        <dt>macOS</dt>
+        <dd>System Preferences → Accessibility → Display → Reduce motion</dd>
+        
+        <dt>Windows</dt>
+        <dd>Settings → Ease of Access → Display → Show animations</dd>
+        
+        <dt>Linux</dt>
+        <dd>Varies by desktop environment (GNOME, KDE, etc.)</dd>
+      </dl>
+
+      <div class="current-state" role="status" aria-live="polite">
+        <strong>Current setting:</strong>
+        <span class="motion-status">Motion enabled</span>
+      </div>
+    </section>
+
+    <section class="code-section">
+      <h2>Implementation</h2>
+      <pre><code>@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .button:hover {
+    transform: none;
+    background-color: var(--hover-color);
+  }
+}</code></pre>
+    </section>
+  </main>
+
+  <script>
+    // Detect and display current motion preference
+    const motionStatus = document.querySelector('.motion-status');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    function updateMotionStatus() {
+      motionStatus.textContent = prefersReducedMotion.matches 
+        ? 'Motion reduced' 
+        : 'Motion enabled';
+    }
+    
+    updateMotionStatus();
+    prefersReducedMotion.addEventListener('change', updateMotionStatus);
+  </script>
+</body>
+</html>

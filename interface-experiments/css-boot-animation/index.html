@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Boot Animation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="terminal">
+    <div class="boot-sequence">
+      <div class="boot-line" style="animation-delay: 0s;">
+        <span class="status ok">[OK]</span> BIOS initialized
+      </div>
+      <div class="boot-line" style="animation-delay: 0.3s;">
+        <span class="status ok">[OK]</span> Memory check complete
+      </div>
+      <div class="boot-line" style="animation-delay: 0.6s;">
+        <span class="status ok">[OK]</span> Storage devices detected
+      </div>
+      <div class="boot-line" style="animation-delay: 1s;">
+        <span class="status load">[....]</span> Loading kernel modules
+      </div>
+      <div class="boot-line" style="animation-delay: 1.5s;">
+        <span class="status ok">[OK]</span> Kernel modules loaded
+      </div>
+      <div class="boot-line" style="animation-delay: 2s;">
+        <span class="status load">[....]</span> Starting network services
+      </div>
+      <div class="boot-line" style="animation-delay: 2.5s;">
+        <span class="status ok">[OK]</span> Network services active
+      </div>
+      <div class="boot-line" style="animation-delay: 3s;">
+        <span class="status load">[....]</span> Initializing user space
+      </div>
+      <div class="boot-line" style="animation-delay: 3.5s;">
+        <span class="status ok">[OK]</span> User space ready
+      </div>
+      <div class="boot-line" style="animation-delay: 4s;">
+        <span class="status ok">[OK]</span> System operational
+      </div>
+    </div>
+    
+    <div class="cursor"></div>
+  </div>
+</body>
+</html>

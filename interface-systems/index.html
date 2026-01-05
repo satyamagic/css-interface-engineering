@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="System-first interface architecture using pure HTML and CSS">
+  <title>Interface Systems</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/system.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Interface Systems</h1>
+    <p class="subtitle">System-first interface architecture</p>
+  </header>
+
+  <nav class="site-nav">
+    <a href="#hud">HUD Interface</a>
+    <a href="#data">Data Table</a>
+    <a href="#command">Command Palette</a>
+  </nav>
+
+  <main class="site-main">
+    <section id="principles">
+      <h2>Principles</h2>
+      <ul class="principle-list">
+        <li>
+          <strong>Performance budget</strong>
+          <p>Initial load under 50KB. Time to interactive under 2 seconds.</p>
+        </li>
+        <li>
+          <strong>Information hierarchy</strong>
+          <p>Visual weight follows data importance. No decoration without purpose.</p>
+        </li>
+        <li>
+          <strong>Failure awareness</strong>
+          <p>Interfaces degrade gracefully when systems fail.</p>
+        </li>
+        <li>
+          <strong>Accessibility by default</strong>
+          <p>Semantic HTML. Keyboard navigation. Reduced motion support.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="examples">
+      <h2>Examples</h2>
+      <div class="example-grid">
+        <article class="example-card">
+          <h3>HUD Interface</h3>
+          <p>Real-time data display with visual hierarchy and failure states.</p>
+          <a href="examples/hud-interface/" class="example-link">View example</a>
+        </article>
+        
+        <article class="example-card">
+          <h3>Data Table</h3>
+          <p>Large dataset rendering with virtualization and keyboard navigation.</p>
+          <a href="examples/data-table/" class="example-link">View example</a>
+        </article>
+        
+        <article class="example-card">
+          <h3>Command Palette</h3>
+          <p>Keyboard-first command interface with fuzzy search and shortcuts.</p>
+          <a href="examples/command-palette/" class="example-link">View example</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Satya Nagara</p>
+  </footer>
+</body>
+</html>
