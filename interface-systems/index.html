@@ -11,9 +11,23 @@
   <link rel="stylesheet" href="styles/components.css">
 </head>
 <body>
+  <div class="grid-background"></div>
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+  
   <header class="site-header">
-    <h1>Interface Systems</h1>
+    <div class="status-bar">
+      <span class="status-indicator"></span>
+      <span class="status-text">System Operational</span>
+      <span class="status-time" id="clock"></span>
+    </div>
+    <h1><span class="text-glitch" data-text="Interface Systems">Interface Systems</span></h1>
     <p class="subtitle">System-first interface architecture</p>
+    <div class="header-stats">
+      <div class="stat"><span class="stat-value">99.9</span><span class="stat-label">%</span></div>
+      <div class="stat"><span class="stat-value">< 2s</span><span class="stat-label">TTI</span></div>
+      <div class="stat"><span class="stat-value">< 50KB</span><span class="stat-label">Size</span></div>
+    </div>
   </header>
 
   <nav class="site-nav">
@@ -26,21 +40,29 @@
     <section id="principles">
       <h2>Principles</h2>
       <ul class="principle-list">
-        <li>
+        <li data-principle="1">
+          <div class="principle-icon">⚡</div>
           <strong>Performance budget</strong>
           <p>Initial load under 50KB. Time to interactive under 2 seconds.</p>
+          <div class="principle-glow"></div>
         </li>
-        <li>
+        <li data-principle="2">
+          <div class="principle-icon">📊</div>
           <strong>Information hierarchy</strong>
           <p>Visual weight follows data importance. No decoration without purpose.</p>
+          <div class="principle-glow"></div>
         </li>
-        <li>
+        <li data-principle="3">
+          <div class="principle-icon">🛡️</div>
           <strong>Failure awareness</strong>
           <p>Interfaces degrade gracefully when systems fail.</p>
+          <div class="principle-glow"></div>
         </li>
-        <li>
+        <li data-principle="4">
+          <div class="principle-icon">♿</div>
           <strong>Accessibility by default</strong>
           <p>Semantic HTML. Keyboard navigation. Reduced motion support.</p>
+          <div class="principle-glow"></div>
         </li>
       </ul>
     </section>
@@ -70,7 +92,32 @@
   </main>
 
   <footer class="site-footer">
-    <p>Satya Nagara</p>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>Satya Nagara</h4>
+        <p>System-first interface engineer</p>
+      </div>
+      <div class="footer-section">
+        <div class="tech-stack">
+          <span class="tech-badge">HTML5</span>
+          <span class="tech-badge">CSS3</span>
+          <span class="tech-badge">A11Y</span>
+        </div>
+      </div>
+    </div>
   </footer>
+  
+  <script>
+    // Live clock
+    function updateClock() {
+      const clock = document.getElementById('clock');
+      if (clock) {
+        const now = new Date();
+        clock.textContent = now.toLocaleTimeString('en-US', { hour12: false });
+      }
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
 </body>
 </html>
