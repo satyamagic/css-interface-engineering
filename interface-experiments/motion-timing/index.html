@@ -7,45 +7,94 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="background-grid"></div>
+  
   <main class="container">
     <header>
-      <h1>Easing Function Comparison</h1>
-      <p class="subtitle">Click any box to see timing differences</p>
+      <div class="header-accent"></div>
+      <h1><span class="gradient-text">Easing Function Comparison</span></h1>
+      <p class="subtitle">Watch how different timing functions affect motion</p>
+      <button class="start-race" id="startRace">🏁 Start Race</button>
     </header>
 
+    <section class="race-track">
+      <div class="track-line"></div>
+      <div class="ball ball-ease-in" data-easing="ease-in">
+        <span class="ball-label">Ease-In</span>
+      </div>
+      <div class="ball ball-ease-out" data-easing="ease-out">
+        <span class="ball-label">Ease-Out</span>
+      </div>
+      <div class="ball ball-ease-in-out" data-easing="ease-in-out">
+        <span class="ball-label">In-Out</span>
+      </div>
+      <div class="ball ball-linear" data-easing="linear">
+        <span class="ball-label">Linear</span>
+      </div>
+      <div class="finish-line">FINISH</div>
+    </section>
+
     <section class="comparison-grid">
-      <article class="timing-demo">
+      <article class="timing-demo" data-easing="ease-in">
+        <div class="curve-visual">
+          <svg viewBox="0 0 100 100" class="bezier-curve">
+            <path d="M 10 90 C 10 90, 42 90, 90 10" stroke="#00d9ff" fill="none" stroke-width="2"/>
+            <circle cx="10" cy="90" r="3" fill="#00d9ff"/>
+            <circle cx="90" cy="10" r="3" fill="#00d9ff"/>
+          </svg>
+        </div>
         <h2>Ease-In</h2>
         <p class="description">Accelerates from rest</p>
         <button class="demo-box ease-in" aria-label="Ease-in animation demo">
-          Click
+          Click to Animate
         </button>
         <code>cubic-bezier(0.42, 0, 1, 1)</code>
       </article>
 
-      <article class="timing-demo">
+      <article class="timing-demo" data-easing="ease-out">
+        <div class="curve-visual">
+          <svg viewBox="0 0 100 100" class="bezier-curve">
+            <path d="M 10 90 C 10 10, 58 10, 90 10" stroke="#00ff88" fill="none" stroke-width="2"/>
+            <circle cx="10" cy="90" r="3" fill="#00ff88"/>
+            <circle cx="90" cy="10" r="3" fill="#00ff88"/>
+          </svg>
+        </div>
         <h2>Ease-Out</h2>
         <p class="description">Decelerates to rest</p>
         <button class="demo-box ease-out" aria-label="Ease-out animation demo">
-          Click
+          Click to Animate
         </button>
         <code>cubic-bezier(0, 0, 0.58, 1)</code>
       </article>
 
-      <article class="timing-demo">
+      <article class="timing-demo" data-easing="ease-in-out">
+        <div class="curve-visual">
+          <svg viewBox="0 0 100 100" class="bezier-curve">
+            <path d="M 10 90 C 10 50, 90 50, 90 10" stroke="#ffaa00" fill="none" stroke-width="2"/>
+            <circle cx="10" cy="90" r="3" fill="#ffaa00"/>
+            <circle cx="90" cy="10" r="3" fill="#ffaa00"/>
+          </svg>
+        </div>
         <h2>Ease-In-Out</h2>
         <p class="description">Natural motion cycle</p>
         <button class="demo-box ease-in-out" aria-label="Ease-in-out animation demo">
-          Click
+          Click to Animate
         </button>
         <code>cubic-bezier(0.42, 0, 0.58, 1)</code>
       </article>
 
-      <article class="timing-demo">
+      <article class="timing-demo" data-easing="linear">
+        <div class="curve-visual">
+          <svg viewBox="0 0 100 100" class="bezier-curve">
+            <path d="M 10 90 L 90 10" stroke="#a0a0a0" fill="none" stroke-width="2"/>
+            <circle cx="10" cy="90" r="3" fill="#a0a0a0"/>
+            <circle cx="90" cy="10" r="3" fill="#a0a0a0"/>
+          </svg>
+        </div>
         <h2>Linear</h2>
         <p class="description">Constant velocity</p>
         <button class="demo-box linear" aria-label="Linear animation demo">
-          Click
+          Click to Animate
         </button>
         <code>cubic-bezier(0, 0, 1, 1)</code>
       </article>
@@ -91,5 +140,32 @@
       </table>
     </section>
   </main>
+  
+  <script>
+    // Race animation
+    const startBtn = document.getElementById('startRace');
+    const balls = document.querySelectorAll('.ball');
+    
+    startBtn.addEventListener('click', () => {
+      balls.forEach(ball => {
+        ball.classList.remove('racing');
+        // Force reflow
+        void ball.offsetWidth;
+        ball.classList.add('racing');
+      });
+      
+      startBtn.textContent = '🏁 Race Again';
+    });
+    
+    // Card button animations
+    const demoBoxes = document.querySelectorAll('.demo-box');
+    demoBoxes.forEach(box => {
+      box.addEventListener('click', function() {
+        this.classList.remove('clicked');
+        void this.offsetWidth;
+        this.classList.add('clicked');
+      });
+    });
+  </script>
 </body>
 </html>
