@@ -18,11 +18,15 @@ Remove until nothing remains that can be removed.
 
 ## Work
 
-[**interface-systems**](interface-systems/)  
+[**interface-systems**](interface-systems/) • [Live Demo](https://satyamagic.github.io/css-interface-engineering/interface-systems/)  
 Portfolio demonstrating interface architecture using pure HTML and CSS.
 
 [**interface-experiments**](interface-experiments/)  
 Focused explorations of specific interface patterns and interactions.
+- [CSS Boot Animation](https://satyamagic.github.io/css-interface-engineering/interface-experiments/css-boot-animation/)
+- [HUD Grid Layout](https://satyamagic.github.io/css-interface-engineering/interface-experiments/hud-grid-layout/)
+- [Motion Timing](https://satyamagic.github.io/css-interface-engineering/interface-experiments/motion-timing/)
+- [Reduced Motion](https://satyamagic.github.io/css-interface-engineering/interface-experiments/reduced-motion/)
 
 [**system-design-notes**](system-design-notes/)  
 Technical writing on interface philosophy and system constraints.
