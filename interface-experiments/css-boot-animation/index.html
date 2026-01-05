@@ -7,41 +7,257 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="terminal">
-    <div class="boot-sequence">
-      <div class="boot-line" style="animation-delay: 0s;">
-        <span class="status ok">[OK]</span> BIOS initialized
+  <div class="background-grid"></div>
+  <div class="scan-line"></div>
+  
+  <div class="boot-container">
+    <!-- System Header -->
+    <div class="system-header">
+      <div class="header-left">
+        <span class="system-logo">⚡</span>
+        <div>
+          <h1 class="system-title">INTERFACE OS v2.1.0</h1>
+          <div class="system-subtitle">Advanced Boot Sequence Manager</div>
+        </div>
       </div>
-      <div class="boot-line" style="animation-delay: 0.3s;">
-        <span class="status ok">[OK]</span> Memory check complete
-      </div>
-      <div class="boot-line" style="animation-delay: 0.6s;">
-        <span class="status ok">[OK]</span> Storage devices detected
-      </div>
-      <div class="boot-line" style="animation-delay: 1s;">
-        <span class="status load">[....]</span> Loading kernel modules
-      </div>
-      <div class="boot-line" style="animation-delay: 1.5s;">
-        <span class="status ok">[OK]</span> Kernel modules loaded
-      </div>
-      <div class="boot-line" style="animation-delay: 2s;">
-        <span class="status load">[....]</span> Starting network services
-      </div>
-      <div class="boot-line" style="animation-delay: 2.5s;">
-        <span class="status ok">[OK]</span> Network services active
-      </div>
-      <div class="boot-line" style="animation-delay: 3s;">
-        <span class="status load">[....]</span> Initializing user space
-      </div>
-      <div class="boot-line" style="animation-delay: 3.5s;">
-        <span class="status ok">[OK]</span> User space ready
-      </div>
-      <div class="boot-line" style="animation-delay: 4s;">
-        <span class="status ok">[OK]</span> System operational
+      <div class="system-status">
+        <span class="status-indicator"></span>
+        <span class="status-text">BOOTING...</span>
       </div>
     </div>
-    
-    <div class="cursor"></div>
+
+    <!-- System Diagnostics Grid -->
+    <div class="diagnostics-grid">
+      <div class="diagnostic-card">
+        <div class="card-icon">🖥️</div>
+        <div class="card-label">CPU</div>
+        <div class="card-value" id="cpu-usage">--</div>
+      </div>
+      <div class="diagnostic-card">
+        <div class="card-icon">💾</div>
+        <div class="card-label">RAM</div>
+        <div class="card-value" id="ram-usage">--</div>
+      </div>
+      <div class="diagnostic-card">
+        <div class="card-icon">💿</div>
+        <div class="card-label">DISK</div>
+        <div class="card-value" id="disk-usage">--</div>
+      </div>
+      <div class="diagnostic-card">
+        <div class="card-icon">🌐</div>
+        <div class="card-label">NET</div>
+        <div class="card-value" id="net-status">--</div>
+      </div>
+    </div>
+
+    <!-- Main Terminal -->
+    <div class="terminal">
+      <div class="terminal-header">
+        <div class="terminal-title">📟 System Console</div>
+        <div class="terminal-time" id="terminal-time">00:00:00</div>
+      </div>
+      
+      <div class="boot-sequence" id="boot-sequence">
+        <div class="boot-line" data-delay="0">
+          <span class="timestamp">[0.000s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">BIOS initialization complete</span>
+        </div>
+        <div class="boot-line" data-delay="200">
+          <span class="timestamp">[0.124s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">Memory test passed <span class="detail">(16384 MB)</span></span>
+        </div>
+        <div class="boot-line" data-delay="400">
+          <span class="timestamp">[0.256s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">Storage devices detected <span class="detail">(NVME0, SSD1)</span></span>
+        </div>
+        <div class="boot-line" data-delay="600">
+          <span class="timestamp">[0.389s]</span>
+          <span class="status load">[LOAD]</span> 
+          <span class="message">Loading kernel modules...</span>
+          <div class="progress-bar"><div class="progress-fill" data-target="100"></div></div>
+        </div>
+        <div class="boot-line" data-delay="1400">
+          <span class="timestamp">[1.024s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">Kernel modules loaded <span class="detail">(42 modules)</span></span>
+        </div>
+        <div class="boot-line" data-delay="1600">
+          <span class="timestamp">[1.156s]</span>
+          <span class="status load">[LOAD]</span> 
+          <span class="message">Initializing hardware drivers...</span>
+          <div class="progress-bar"><div class="progress-fill" data-target="100"></div></div>
+        </div>
+        <div class="boot-line" data-delay="2400">
+          <span class="timestamp">[1.892s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">Hardware drivers initialized</span>
+        </div>
+        <div class="boot-line" data-delay="2600">
+          <span class="timestamp">[2.048s]</span>
+          <span class="status load">[LOAD]</span> 
+          <span class="message">Starting network services...</span>
+          <div class="progress-bar"><div class="progress-fill" data-target="100"></div></div>
+        </div>
+        <div class="boot-line" data-delay="3400">
+          <span class="timestamp">[2.764s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">Network services active <span class="detail">(eth0: 192.168.1.100)</span></span>
+        </div>
+        <div class="boot-line" data-delay="3600">
+          <span class="timestamp">[2.912s]</span>
+          <span class="status load">[LOAD]</span> 
+          <span class="message">Mounting filesystems...</span>
+          <div class="progress-bar"><div class="progress-fill" data-target="100"></div></div>
+        </div>
+        <div class="boot-line" data-delay="4200">
+          <span class="timestamp">[3.456s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">Filesystems mounted <span class="detail">(/root, /home, /var)</span></span>
+        </div>
+        <div class="boot-line" data-delay="4400">
+          <span class="timestamp">[3.628s]</span>
+          <span class="status load">[LOAD]</span> 
+          <span class="message">Starting system services...</span>
+          <div class="progress-bar"><div class="progress-fill" data-target="100"></div></div>
+        </div>
+        <div class="boot-line" data-delay="5200">
+          <span class="timestamp">[4.332s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">System services started</span>
+        </div>
+        <div class="boot-line" data-delay="5400">
+          <span class="timestamp">[4.512s]</span>
+          <span class="status ok">[  OK  ]</span> 
+          <span class="message">User space initialized</span>
+        </div>
+        <div class="boot-line boot-complete" data-delay="5800">
+          <span class="timestamp">[4.756s]</span>
+          <span class="status success">[READY]</span> 
+          <span class="message">✨ System operational - All services running</span>
+        </div>
+      </div>
+      
+      <div class="command-prompt">
+        <span class="prompt-user">root@interface-os</span>
+        <span class="prompt-sep">:</span>
+        <span class="prompt-path">~</span>
+        <span class="prompt-symbol">#</span>
+        <span class="cursor"></span>
+      </div>
+    </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+      <button class="control-btn" id="restart-btn">
+        <span class="btn-icon">🔄</span>
+        <span class="btn-label">Restart Boot</span>
+      </button>
+      <button class="control-btn" id="speed-btn">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-label" id="speed-label">Speed: 1x</span>
+      </button>
+    </div>
   </div>
+
+  <script>
+    let bootSpeed = 1;
+    let bootInterval;
+
+    function updateTime() {
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0];
+      document.getElementById('terminal-time').textContent = timeStr;
+    }
+
+    function animateDiagnostics() {
+      const cpuElem = document.getElementById('cpu-usage');
+      const ramElem = document.getElementById('ram-usage');
+      const diskElem = document.getElementById('disk-usage');
+      const netElem = document.getElementById('net-status');
+
+      let cpuValue = 0;
+      let ramValue = 0;
+      let diskValue = 0;
+
+      const interval = setInterval(() => {
+        if (cpuValue < 38) {
+          cpuValue += Math.random() * 5;
+          cpuElem.textContent = Math.min(38, cpuValue).toFixed(0) + '%';
+        }
+        if (ramValue < 8192) {
+          ramValue += Math.random() * 800;
+          ramElem.textContent = Math.min(8192, ramValue).toFixed(0) + 'MB';
+        }
+        if (diskValue < 42) {
+          diskValue += Math.random() * 5;
+          diskElem.textContent = Math.min(42, diskValue).toFixed(0) + '%';
+        }
+        
+        if (cpuValue >= 38 && ramValue >= 8192 && diskValue >= 42) {
+          netElem.textContent = 'ONLINE';
+          netElem.style.color = '#00ff88';
+          clearInterval(interval);
+          
+          setTimeout(() => {
+            document.querySelector('.status-text').textContent = 'ONLINE';
+            document.querySelector('.status-indicator').style.background = 'linear-gradient(135deg, #00ff88, #00d9ff)';
+          }, 500);
+        }
+      }, 100);
+    }
+
+    function runBootSequence() {
+      const lines = document.querySelectorAll('.boot-line');
+      const statusText = document.querySelector('.status-text');
+      
+      statusText.textContent = 'BOOTING...';
+      document.querySelector('.status-indicator').style.background = 'linear-gradient(135deg, #ffd700, #ff8c00)';
+      
+      lines.forEach(line => {
+        line.classList.remove('visible');
+        const progressBar = line.querySelector('.progress-fill');
+        if (progressBar) {
+          progressBar.style.width = '0%';
+        }
+      });
+
+      document.getElementById('cpu-usage').textContent = '--';
+      document.getElementById('ram-usage').textContent = '--';
+      document.getElementById('disk-usage').textContent = '--';
+      document.getElementById('net-status').textContent = '--';
+      document.getElementById('net-status').style.color = '#808080';
+
+      setTimeout(() => animateDiagnostics(), 500);
+
+      lines.forEach(line => {
+        const delay = parseInt(line.getAttribute('data-delay')) / bootSpeed;
+        setTimeout(() => {
+          line.classList.add('visible');
+          const progressBar = line.querySelector('.progress-fill');
+          if (progressBar) {
+            const target = progressBar.getAttribute('data-target');
+            setTimeout(() => {
+              progressBar.style.width = target + '%';
+            }, 50);
+          }
+        }, delay);
+      });
+    }
+
+    document.getElementById('restart-btn').addEventListener('click', runBootSequence);
+
+    document.getElementById('speed-btn').addEventListener('click', () => {
+      bootSpeed = bootSpeed === 1 ? 2 : bootSpeed === 2 ? 0.5 : 1;
+      document.getElementById('speed-label').textContent = `Speed: ${bootSpeed}x`;
+    });
+
+    setInterval(updateTime, 1000);
+    updateTime();
+    
+    setTimeout(runBootSequence, 500);
+  </script>
 </body>
 </html>
