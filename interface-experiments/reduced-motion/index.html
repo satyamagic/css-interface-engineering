@@ -6,64 +6,181 @@
   <title>Reduced Motion Demonstration</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-motion="full">
+  <div class="background-pattern"></div>
+  <div class="floating-orb orb-1"></div>
+  <div class="floating-orb orb-2"></div>
+  
   <main class="container">
     <header>
-      <h1>Reduced Motion Accessibility</h1>
-      <p class="subtitle">Enable "Reduce motion" in your OS settings to see the difference</p>
+      <div class="header-glow"></div>
+      <h1><span class="gradient-text">Reduced Motion Accessibility</span></h1>
+      <p class="subtitle">Experience the difference between full motion and reduced motion</p>
+      
+      <div class="motion-simulator">
+        <label class="simulator-toggle">
+          <input type="checkbox" id="motionToggle" aria-label="Simulate reduced motion">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span class="toggle-label">
+            <span class="label-full">Full Motion</span>
+            <span class="label-reduced">Reduced Motion</span>
+          </span>
+        </label>
+        <p class="simulator-hint">Toggle to simulate reduced motion mode</p>
+      </div>
+      
+      <div class="current-state" role="status" aria-live="polite">
+        <span class="status-indicator"></span>
+        <strong>System preference:</strong>
+        <span class="motion-status">Detecting...</span>
+      </div>
     </header>
 
     <section class="demo-section">
-      <h2>Interactive Elements</h2>
+      <h2>Interactive Comparisons</h2>
+      <p class="section-description">See how animations adapt for accessibility</p>
       
-      <div class="demo-grid">
-        <article class="demo-card">
-          <h3>Button</h3>
-          <p>Standard: Lifts on hover<br>Reduced: Background changes</p>
-          <button class="demo-button">Hover me</button>
-        </article>
-
-        <article class="demo-card">
-          <h3>Card</h3>
-          <p>Standard: Scales and elevates<br>Reduced: Border highlights</p>
-          <div class="hover-card">
-            Interactive card
+      <div class="comparison-grid">
+        <article class="comparison-demo">
+          <h3>Button Interaction</h3>
+          <div class="split-view">
+            <div class="view-side view-normal">
+              <span class="view-label">Full Motion</span>
+              <button class="demo-button demo-normal">Hover Me</button>
+              <p class="behavior-desc">Lifts and scales</p>
+            </div>
+            <div class="view-divider"></div>
+            <div class="view-side view-reduced">
+              <span class="view-label">Reduced Motion</span>
+              <button class="demo-button demo-reduced">Hover Me</button>
+              <p class="behavior-desc">Background changes</p>
+            </div>
           </div>
         </article>
 
-        <article class="demo-card">
-          <h3>Loading</h3>
-          <p>Standard: Spinning animation<br>Reduced: Pulsing opacity</p>
-          <div class="spinner" aria-label="Loading"></div>
+        <article class="comparison-demo">
+          <h3>Card Transform</h3>
+          <div class="split-view">
+            <div class="view-side view-normal">
+              <span class="view-label">Full Motion</span>
+              <div class="hover-card hover-normal">
+                <span class="card-icon">📦</span>
+                <span>Interactive Card</span>
+              </div>
+              <p class="behavior-desc">Scales and rotates</p>
+            </div>
+            <div class="view-divider"></div>
+            <div class="view-side view-reduced">
+              <span class="view-label">Reduced Motion</span>
+              <div class="hover-card hover-reduced">
+                <span class="card-icon">📦</span>
+                <span>Interactive Card</span>
+              </div>
+              <p class="behavior-desc">Border highlights</p>
+            </div>
+          </div>
         </article>
 
-        <article class="demo-card">
-          <h3>Toggle</h3>
-          <p>Standard: Slides across<br>Reduced: Instant position</p>
-          <label class="toggle">
-            <input type="checkbox" aria-label="Toggle switch">
-            <span class="toggle-slider"></span>
-          </label>
+        <article class="comparison-demo">
+          <h3>Loading Indicator</h3>
+          <div class="split-view">
+            <div class="view-side view-normal">
+              <span class="view-label">Full Motion</span>
+              <div class="spinner spinner-normal" aria-label="Loading"></div>
+              <p class="behavior-desc">Continuous rotation</p>
+            </div>
+            <div class="view-divider"></div>
+            <div class="view-side view-reduced">
+              <span class="view-label">Reduced Motion</span>
+              <div class="spinner spinner-reduced" aria-label="Loading"></div>
+              <p class="behavior-desc">Gentle pulse</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="comparison-demo">
+          <h3>Toggle Switch</h3>
+          <div class="split-view">
+            <div class="view-side view-normal">
+              <span class="view-label">Full Motion</span>
+              <label class="toggle toggle-normal">
+                <input type="checkbox" aria-label="Normal toggle">
+                <span class="toggle-slider"></span>
+              </label>
+              <p class="behavior-desc">Smooth slide</p>
+            </div>
+            <div class="view-divider"></div>
+            <div class="view-side view-reduced">
+              <span class="view-label">Reduced Motion</span>
+              <label class="toggle toggle-reduced">
+                <input type="checkbox" aria-label="Reduced toggle">
+                <span class="toggle-slider"></span>
+              </label>
+              <p class="behavior-desc">Instant jump</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="comparison-demo">
+          <h3>Modal Entry</h3>
+          <div class="split-view">
+            <div class="view-side view-normal">
+              <span class="view-label">Full Motion</span>
+              <button class="modal-trigger" data-mode="normal">Show Modal</button>
+              <p class="behavior-desc">Fade + scale in</p>
+            </div>
+            <div class="view-divider"></div>
+            <div class="view-side view-reduced">
+              <span class="view-label">Reduced Motion</span>
+              <button class="modal-trigger" data-mode="reduced">Show Modal</button>
+              <p class="behavior-desc">Instant appear</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="comparison-demo">
+          <h3>Notification Toast</h3>
+          <div class="split-view">
+            <div class="view-side view-normal">
+              <span class="view-label">Full Motion</span>
+              <button class="toast-trigger" data-mode="normal">Show Toast</button>
+              <p class="behavior-desc">Slides from edge</p>
+            </div>
+            <div class="view-divider"></div>
+            <div class="view-side view-reduced">
+              <span class="view-label">Reduced Motion</span>
+              <button class="toast-trigger" data-mode="reduced">Show Toast</button>
+              <p class="behavior-desc">Fades in place</p>
+            </div>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="info-section">
-      <h2>How to Test</h2>
-      <dl class="info-list">
-        <dt>macOS</dt>
-        <dd>System Preferences → Accessibility → Display → Reduce motion</dd>
+      <h2>System Settings</h2>
+      <p class="section-description">Enable reduced motion in your operating system</p>
+      
+      <div class="settings-grid">
+        <div class="settings-card">
+          <div class="os-icon">🍎</div>
+          <h3>macOS</h3>
+          <p>System Preferences → Accessibility → Display → Reduce motion</p>
+        </div>
         
-        <dt>Windows</dt>
-        <dd>Settings → Ease of Access → Display → Show animations</dd>
+        <div class="settings-card">
+          <div class="os-icon">🪟</div>
+          <h3>Windows</h3>
+          <p>Settings → Ease of Access → Display → Show animations</p>
+        </div>
         
-        <dt>Linux</dt>
-        <dd>Varies by desktop environment (GNOME, KDE, etc.)</dd>
-      </dl>
-
-      <div class="current-state" role="status" aria-live="polite">
-        <strong>Current setting:</strong>
-        <span class="motion-status">Motion enabled</span>
+        <div class="settings-card">
+          <div class="os-icon">🐧</div>
+          <h3>Linux</h3>
+          <p>Varies by desktop environment (GNOME, KDE, etc.)</p>
+        </div>
       </div>
     </section>
 
@@ -82,20 +199,88 @@
 }</code></pre>
     </section>
   </main>
+  
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content" id="modalContent">
+      <h3>Modal Dialog</h3>
+      <p>This modal demonstrates animation differences</p>
+      <button class="close-modal" id="closeModal">Close</button>
+    </div>
+  </div>
+  
+  <div class="toast-container" id="toastContainer"></div>
 
   <script>
-    // Detect and display current motion preference
+    const motionToggle = document.getElementById('motionToggle');
+    const body = document.body;
     const motionStatus = document.querySelector('.motion-status');
+    const statusIndicator = document.querySelector('.status-indicator');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     
+    // Update system preference display
     function updateMotionStatus() {
-      motionStatus.textContent = prefersReducedMotion.matches 
-        ? 'Motion reduced' 
-        : 'Motion enabled';
+      const isReduced = prefersReducedMotion.matches;
+      motionStatus.textContent = isReduced ? 'Motion reduced' : 'Motion enabled';
+      statusIndicator.className = 'status-indicator ' + (isReduced ? 'status-reduced' : 'status-full');
     }
     
     updateMotionStatus();
     prefersReducedMotion.addEventListener('change', updateMotionStatus);
+    
+    // Simulator toggle
+    motionToggle.addEventListener('change', (e) => {
+      body.setAttribute('data-motion', e.target.checked ? 'reduced' : 'full');
+    });
+    
+    // Modal functionality
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+    const modalTriggers = document.querySelectorAll('.modal-trigger');
+    
+    modalTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const mode = trigger.dataset.mode;
+        modalContent.className = 'modal-content modal-' + mode;
+        modalOverlay.classList.add('active');
+      });
+    });
+    
+    closeModal.addEventListener('click', () => {
+      modalOverlay.classList.remove('active');
+    });
+    
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.classList.remove('active');
+      }
+    });
+    
+    // Toast functionality
+    const toastContainer = document.getElementById('toastContainer');
+    const toastTriggers = document.querySelectorAll('.toast-trigger');
+    let toastId = 0;
+    
+    toastTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const mode = trigger.dataset.mode;
+        const toast = document.createElement('div');
+        toast.className = 'toast toast-' + mode;
+        toast.textContent = 'Notification message';
+        toast.id = 'toast-' + toastId++;
+        
+        toastContainer.appendChild(toast);
+        
+        setTimeout(() => {
+          toast.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      });
+    });
   </script>
 </body>
 </html>
